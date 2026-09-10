@@ -1,0 +1,745 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f4f8fb;
+
+    color: #17202a;
+
+    min-height: 100vh;
+}
+
+
+/* =================================
+   AUTH
+================================= */
+
+.auth-container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9f2ff,
+            #f4f8fb
+        );
+}
+
+
+.auth-box {
+
+    width: 100%;
+
+    max-width: 400px;
+
+    padding: 32px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.95
+    );
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+.auth-header {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+.school-icon {
+
+    font-size: 45px;
+
+    margin-bottom: 8px;
+}
+
+
+.auth-header h1 {
+
+    font-size: 30px;
+
+    color: #1677a8;
+
+    margin-bottom: 6px;
+}
+
+
+.auth-header p {
+
+    font-size: 13px;
+
+    color: #667781;
+}
+
+
+.input-group {
+
+    margin-bottom: 17px;
+}
+
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+
+.input-group input,
+.input-group select {
+
+    width: 100%;
+
+    height: 46px;
+
+    border: 1px solid #d5e1e8;
+
+    border-radius: 12px;
+
+    padding: 0 14px;
+
+    background: #f8fbfd;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+.input-group input:focus,
+.input-group select:focus {
+
+    border-color: #55a9cf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(85, 169, 207, 0.15);
+}
+
+
+.btn-primary {
+
+    width: 100%;
+
+    height: 46px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #3d9bc5;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.btn-primary:hover {
+
+    background: #287fa7;
+}
+
+
+.auth-switch {
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    font-size: 13px;
+
+    color: #667781;
+}
+
+
+.auth-switch a {
+
+    color: #1677a8;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+
+.message {
+
+    padding: 10px;
+
+    margin-bottom: 15px;
+
+    border-radius: 9px;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+.message.error {
+
+    background: #ffe5e5;
+
+    color: #a40000;
+}
+
+
+.message.success {
+
+    background: #e2f6e9;
+
+    color: #176b37;
+}
+
+
+
+/* =================================
+   APP
+================================= */
+
+.app {
+
+    min-height: 100vh;
+
+    background: #f4f8fb;
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.app-header {
+
+    height: 70px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #52b6d5,
+            #388fd0
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 18px;
+
+    color: white;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+.menu-button {
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+
+.app-title {
+
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.title-icon {
+
+    font-size: 22px;
+}
+
+
+.profile-icon {
+
+    font-size: 25px;
+}
+
+
+
+/* =================================
+   SIDE MENU
+================================= */
+
+.side-menu {
+
+    position: fixed;
+
+    top: 0;
+
+    left: -290px;
+
+    width: 270px;
+
+    height: 100vh;
+
+    background: white;
+
+    z-index: 100;
+
+    box-shadow:
+        5px 0 20px
+        rgba(0, 0, 0, 0.15);
+
+    transition:
+        left 0.25s ease;
+}
+
+
+.side-menu.active {
+
+    left: 0;
+}
+
+
+.menu-header {
+
+    height: 70px;
+
+    padding: 0 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            90deg,
+            #52b6d5,
+            #388fd0
+        );
+
+    color: white;
+
+    font-size: 19px;
+}
+
+
+.menu-header button {
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+.side-menu a {
+
+    display: block;
+
+    padding: 16px 20px;
+
+    color: #27343b;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #eef2f4;
+}
+
+
+.side-menu a:hover {
+
+    background: #eaf7fc;
+
+    color: #187da9;
+}
+
+
+.side-menu .menu-logout {
+
+    color: #b52b2b;
+
+    margin-top: 15px;
+}
+
+
+
+/* =================================
+   OVERLAY
+================================= */
+
+.overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.35);
+
+    z-index: 90;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        0.25s ease;
+}
+
+
+.overlay.active {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+
+/* =================================
+   CONTENT
+================================= */
+
+.content {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 25px 20px 50px;
+}
+
+
+/* =================================
+   WELCOME
+================================= */
+
+.welcome-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            #9ed5e8,
+            #65b4d4
+        );
+
+    color: white;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    box-shadow:
+        0 8px 20px
+        rgba(50, 130, 170, 0.15);
+}
+
+
+.small-text {
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+
+.welcome-card h1 {
+
+    font-size: 26px;
+
+    margin-bottom: 5px;
+}
+
+
+.welcome-card p {
+
+    font-size: 14px;
+}
+
+
+.welcome-icon {
+
+    font-size: 55px;
+}
+
+
+/* =================================
+   SECTION
+================================= */
+
+.section-title {
+
+    font-size: 20px;
+
+    margin: 30px 0 16px;
+}
+
+
+/* =================================
+   FEATURE
+================================= */
+
+.feature-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+.feature-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 20px;
+
+    background: white;
+
+    border-radius: 17px;
+
+    text-decoration: none;
+
+    color: #17202a;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.feature-card:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0, 0, 0, 0.1);
+}
+
+
+.feature-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #e5f6fc;
+
+    font-size: 23px;
+}
+
+
+.feature-card h3 {
+
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+
+.feature-card p {
+
+    font-size: 12px;
+
+    color: #77838a;
+
+    line-height: 1.4;
+}
+
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+    .auth-container {
+
+        padding: 15px;
+    }
+
+
+    .auth-box {
+
+        padding: 25px 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .app-header {
+
+        height: 62px;
+    }
+
+
+    .app-title {
+
+        font-size: 16px;
+    }
+
+
+    .content {
+
+        padding:
+            18px 15px 40px;
+    }
+
+
+    .welcome-card {
+
+        padding: 20px;
+
+        border-radius: 17px;
+    }
+
+
+    .welcome-card h1 {
+
+        font-size: 22px;
+    }
+
+
+    .welcome-icon {
+
+        font-size: 43px;
+    }
+
+
+    .feature-grid {
+
+        grid-template-columns: 1fr;
+    }
+  /* =================================
+   LOGIN CHOICE
+================================= */
+
+.login-choice {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    padding: 5px;
+
+    background: #e5f3f9;
+
+    border-radius: 12px;
+}
+
+
+.login-choice button {
+
+    flex: 1;
+
+    border: none;
+
+    padding: 11px;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #287fa7;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.login-choice button.choice-active {
+
+    background: #3d9bc5;
+
+    color: white;
+
+    box-shadow:
+        0 3px 8px
+        rgba(0, 0, 0, 0.12);
+}
+
+}
