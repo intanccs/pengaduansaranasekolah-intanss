@@ -273,8 +273,15 @@ body {
 .menu-button {
     border: none;
     background: transparent;
+  color: white;
     font-size: 28px;
     cursor: pointer;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 
@@ -320,7 +327,7 @@ body {
 
     top: 0;
 
-    left: -290px;
+    left: 0;
 
     width: 270px;
 
@@ -328,20 +335,21 @@ body {
 
     background: white;
 
-    z-index: 100;
+    z-index: 1000;
+  transform: translateX(-100%);
 
     box-shadow:
         5px 0 20px
         rgba(0, 0, 0, 0.15);
 
     transition:
-        left 0.25s ease;
+        transform 0.25s ease;
 }
 
 
 .side-menu.active {
 
-    left: 0;
+    transform: translateX(0);
 }
 
 
@@ -364,9 +372,9 @@ body {
             #388fd0
         );
 
-    color: white;
 
     font-size: 19px;
+  font-weight: bold;
 }
 
 
@@ -388,7 +396,7 @@ body {
 
     display: block;
 
-    padding: 16px 20px;
+    padding: 17px 20px;
 
     color: #27343b;
 
@@ -430,14 +438,15 @@ body {
     background:
         rgba(0, 0, 0, 0.35);
 
-    z-index: 90;
+    z-index: 999;
 
     opacity: 0;
 
     visibility: hidden;
 
     transition:
-        0.25s ease;
+        opacity 0.25s ease,
+      visibility 0.25s ease;
 }
 
 
@@ -446,6 +455,7 @@ body {
     opacity: 1;
 
     visibility: visible;
+  pointer-events: auto;
 }
 
 
@@ -740,6 +750,625 @@ body {
     box-shadow:
         0 3px 8px
         rgba(0, 0, 0, 0.12);
+}
+
+  /* =================================
+   FORM ASPIRASI
+================================= */
+
+.form-card {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.07);
+}
+
+
+.form-card h2 {
+
+    margin-bottom: 7px;
+
+    color: #1677a8;
+}
+
+
+.form-description {
+
+    color: #77838a;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+.form-card textarea {
+
+    width: 100%;
+
+    border: 1px solid #d5e1e8;
+
+    border-radius: 12px;
+
+    padding: 12px 14px;
+
+    background: #f8fbfd;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+
+    resize: vertical;
+
+    outline: none;
+}
+
+
+.form-card textarea:focus {
+
+    border-color: #55a9cf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(85, 169, 207, 0.15);
+}
+
+
+.form-card input[type="file"] {
+
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #d5e1e8;
+
+    border-radius: 12px;
+
+    background: #f8fbfd;
+}
+
+
+.checkbox-group {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 15px 0 20px;
+
+    font-size: 14px;
+}
+
+
+.checkbox-group input {
+
+    width: 17px;
+
+    height: 17px;
+}
+
+
+.back-button {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 28px;
+
+    margin-right: 15px;
+}
+  /* =================================
+   HISTORI ASPIRASI
+================================= */
+
+.back-button {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 30px;
+
+    width: 40px;
+
+}
+
+
+.history-header {
+
+    margin-bottom: 20px;
+
+}
+
+
+.history-header h1 {
+
+    font-size: 25px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.history-header p {
+
+    color: #77838a;
+
+    font-size: 14px;
+
+}
+
+
+/* ================================
+   HISTORY LIST
+================================ */
+
+.history-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+
+.history-card {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0, 0, 0, 0.07);
+
+}
+
+
+.history-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+
+}
+
+
+.category {
+
+    background: #e5f6fc;
+
+    color: #1677a8;
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+.status {
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+/* Status */
+
+.status.waiting {
+
+    background: #fff4d6;
+
+    color: #9a7200;
+
+}
+
+
+.status.process {
+
+    background: #dff2ff;
+
+    color: #1677a8;
+
+}
+
+
+.status.done {
+
+    background: #def6e7;
+
+    color: #23834b;
+
+}
+
+
+.history-card h3 {
+
+    font-size: 17px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.description {
+
+    color: #667781;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+
+.history-date {
+
+    margin-top: 15px;
+
+    color: #9aa6ac;
+
+    font-size: 12px;
+
+}
+
+
+.history-photo {
+
+    width: 100%;
+
+    max-height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    margin-top: 12px;
+
+}
+
+
+/* ================================
+   FEEDBACK
+================================ */
+
+.feedback-box {
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    background: #eef9fd;
+
+    border-left: 4px solid #3d9bc5;
+
+    border-radius: 10px;
+
+}
+
+
+.feedback-box strong {
+
+    display: block;
+
+    color: #1677a8;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.feedback-box p {
+
+    color: #4d626c;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+/* ================================
+   EMPTY
+================================ */
+
+.empty-history {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0, 0, 0, 0.06);
+
+}
+
+
+.empty-icon {
+
+    font-size: 50px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.empty-history h2 {
+
+    font-size: 19px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.empty-history p {
+
+    color: #77838a;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.empty-history .btn-primary {
+
+    display: inline-flex;
+
+    width: auto;
+
+    padding: 0 20px;
+
+    align-items: center;
+
+    text-decoration: none;
+
+}
+  /* =================================
+   UMPAN BALIK
+================================= */
+
+.feedback-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.feedback-card {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.07);
+}
+
+
+.feedback-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+
+.feedback-header h3 {
+    font-size: 16px;
+
+    color: #1677a8;
+}
+
+
+.status {
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+.status-menunggu {
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+
+.status-proses {
+    background: #d9f2ff;
+
+    color: #1677a8;
+}
+
+
+.status-selesai {
+    background: #dff5e5;
+
+    color: #19713a;
+}
+
+
+.feedback-location {
+    margin-bottom: 16px;
+
+    color: #667781;
+
+    font-size: 13px;
+}
+
+
+.feedback-section {
+    margin-bottom: 15px;
+
+    padding: 13px;
+
+    background: #f4f8fb;
+
+    border-radius: 12px;
+}
+
+
+.feedback-section strong,
+.admin-feedback strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+}
+
+
+.feedback-section p,
+.admin-feedback p {
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    color: #4d5b63;
+}
+
+
+.admin-feedback {
+    padding: 14px;
+
+    background: #e5f6fc;
+
+    border-left: 4px solid #3d9bc5;
+
+    border-radius: 10px;
+
+    margin-bottom: 12px;
+}
+
+
+.admin-feedback strong {
+    color: #1677a8;
+}
+
+
+.feedback-date {
+    text-align: right;
+
+    font-size: 11px;
+
+    color: #89959b;
+}
+
+
+/* =================================
+   EMPTY FEEDBACK
+================================= */
+
+.empty-card {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.07);
+}
+
+
+.empty-icon {
+    font-size: 45px;
+
+    margin-bottom: 12px;
+}
+
+
+.empty-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 18px;
+
+    color: #1677a8;
+}
+
+
+.empty-card p {
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    color: #77838a;
+}
+
+
+/* =================================
+   BACK BUTTON
+================================= */
+
+.back-button {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    margin-right: 12px;
 }
 
 }

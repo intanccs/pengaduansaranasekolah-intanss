@@ -56,8 +56,9 @@ $kelas =
 
         <button
             type="button"
+            id="menuButton"
             class="menu-button"
-            onclick="toggleMenu()"
+            aria-label="Buka menu"
         >
             ☰
         </button>
@@ -84,7 +85,7 @@ $kelas =
     <div
         id="overlay"
         class="overlay"
-        onclick="toggleMenu()"
+        
     ></div>
 
 
@@ -103,7 +104,8 @@ $kelas =
 
             <button
                 type="button"
-                onclick="toggleMenu()"
+                id="closeMenu"
+              aria-label="Tutup menu"
             >
                 ×
             </button>
@@ -172,12 +174,12 @@ $kelas =
         </h2>
 
 
-        <div class="feature-grid">
+      
 
             <a
-                href="#"
-                class="feature-card"
-            >
+    href="../aspirasi/buat.php"
+    class="feature-card"
+>
 
                 <div class="feature-icon">
                     📝
@@ -198,36 +200,34 @@ $kelas =
             </a>
 
 
-            <a
-                href="#"
-                class="feature-card"
-            >
+            <a href="histori.php" class="feature-card">
 
-                <div class="feature-icon">
-                    📋
-                </div>
+    <div class="feature-icon">
+        📋
+    </div>
 
-                <div>
+    <div>
 
-                    <h3>
-                        Histori Aspirasi
-                    </h3>
+        <h3>
+            Histori Aspirasi
+        </h3>
 
-                    <p>
-                        Lihat riwayat laporan kamu.
-                    </p>
+        <p>
+            Lihat riwayat laporan kamu.
+        </p>
 
-                </div>
+    </div>
 
-            </a>
+</a>
+
 
 
             <a
-                href="#"
+                href="../feedback/index.php"
                 class="feature-card"
             >
 
-                <div class="feature-icon">
+                <div class="feature-card">
                     💬
                 </div>
 
