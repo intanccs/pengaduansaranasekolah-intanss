@@ -1370,5 +1370,150 @@ body {
 
     margin-right: 12px;
 }
+@media (max-width: 600px) {
 
+    /* semua CSS mobile kamu di sini */
+
+    .back-button {
+        color: white;
+        text-decoration: none;
+        font-size: 27px;
+        line-height: 1;
+        margin-right: 12px;
+    }
+
+} /* ← PENUTUP @media */
+  /* =================================
+   PROFIL SISWA
+================================= */
+
+.student-profile-card {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 10px auto;
+
+    padding: 30px 25px;
+
+    background: white;
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+.student-profile-avatar {
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e5f6fc;
+
+    font-size: 42px;
+}
+
+
+.student-profile-name {
+    margin: 0 0 5px;
+
+    font-size: 24px;
+
+    color: #17202a;
+}
+
+
+.student-profile-role {
+    margin: 0 0 25px;
+
+    font-size: 14px;
+
+    color: #77838a;
+}
+
+
+.student-profile-info {
+    width: 100%;
+
+    margin-bottom: 25px;
+
+    border-top: 1px solid #eef2f4;
+}
+
+
+.student-profile-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 16px 5px;
+
+    border-bottom: 1px solid #eef2f4;
+}
+
+
+.student-profile-label {
+    font-size: 13px;
+
+    color: #77838a;
+}
+
+
+.student-profile-value {
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #27343b;
+
+    text-align: right;
+}
+
+
+.student-profile-back {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    height: 46px;
+
+    padding: 0;
+
+    border-radius: 12px;
+
+    background: #3d9bc5;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+.student-profile-back:hover {
+    background: #287fa7;
+}
 }

@@ -71,11 +71,7 @@ $kelas =
         </div>
 
 
-        <div class="profile-icon">
-
-            👤
-
-        </div>
+        
 
     </header>
 
@@ -92,51 +88,58 @@ $kelas =
     <!-- MENU SAMPING -->
 
     <nav
-        id="sideMenu"
-        class="side-menu"
-    >
+    id="sideMenu"
+    class="side-menu"
+>
 
-        <div class="menu-header">
+    <div class="profile-card">
 
-            <span>
-                Menu
-            </span>
+        <span>
+            Menu
+        </span>
 
-            <button
-                type="button"
-                id="closeMenu"
-              aria-label="Tutup menu"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <a href="siswa.php">
-            🏠 Dashboard
-        </a>
-
-        <a href="#">
-            📝 Buat Aspirasi
-        </a>
-
-        <a href="#">
-            📋 Histori Aspirasi
-        </a>
-
-        <a href="#">
-            💬 Umpan Balik
-        </a>
-
-        <a
-            href="../../logout.php"
-            class="menu-logout"
+        <button
+            type="button"
+            id="closeMenu"
+            aria-label="Tutup menu"
         >
-            Keluar
-        </a>
+            ×
+        </button>
 
-    </nav>
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <a href="siswa.php">
+        🏠 Dashboard
+    </a>
+
+
+    <!-- PROFIL -->
+
+    <a href="../profil/siswa.php">
+        👤 Profil
+    </a>
+
+
+    <!-- HISTORI -->
+
+    <a href="histori.php">
+        📋 Histori Aspirasi
+    </a>
+
+
+    <!-- KELUAR -->
+
+    <a
+        href="../../logout.php"
+        class="menu-logout"
+    >
+        🚪 Keluar
+    </a>
+
+</nav>
 
 
     <main class="content">
@@ -200,25 +203,6 @@ $kelas =
             </a>
 
 
-            <a href="histori.php" class="feature-card">
-
-    <div class="feature-icon">
-        📋
-    </div>
-
-    <div>
-
-        <h3>
-            Histori Aspirasi
-        </h3>
-
-        <p>
-            Lihat riwayat laporan kamu.
-        </p>
-
-    </div>
-
-</a>
 
 
 
