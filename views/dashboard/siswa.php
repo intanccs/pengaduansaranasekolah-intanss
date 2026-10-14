@@ -56,8 +56,9 @@ $kelas =
 
         <button
             type="button"
+            id="menuButton"
             class="menu-button"
-            onclick="toggleMenu()"
+            aria-label="Buka menu"
         >
             ☰
         </button>
@@ -70,11 +71,7 @@ $kelas =
         </div>
 
 
-        <div class="profile-icon">
-
-            👤
-
-        </div>
+        
 
     </header>
 
@@ -84,57 +81,65 @@ $kelas =
     <div
         id="overlay"
         class="overlay"
-        onclick="toggleMenu()"
+        
     ></div>
 
 
     <!-- MENU SAMPING -->
 
     <nav
-        id="sideMenu"
-        class="side-menu"
-    >
+    id="sideMenu"
+    class="side-menu"
+>
 
-        <div class="menu-header">
+    <div class="menu-header">
 
-            <span>
-                Menu
-            </span>
+        <span>
+            Menu
+        </span>
 
-            <button
-                type="button"
-                onclick="toggleMenu()"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <a href="siswa.php">
-            🏠 Dashboard
-        </a>
-
-        <a href="#">
-            📝 Buat Aspirasi
-        </a>
-
-        <a href="#">
-            📋 Histori Aspirasi
-        </a>
-
-        <a href="#">
-            💬 Umpan Balik
-        </a>
-
-        <a
-            href="../../logout.php"
-            class="menu-logout"
+        <button
+            type="button"
+            id="closeMenu"
+            aria-label="Tutup menu"
         >
-            Keluar
-        </a>
+            ×
+        </button>
 
-    </nav>
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <a href="siswa.php">
+        🏠 Dashboard
+    </a>
+
+
+    <!-- PROFIL -->
+
+    <a href="../profil/siswa.php">
+        👤 Profil
+    </a>
+
+
+    <!-- HISTORI -->
+
+    <a href="histori.php">
+        📋 Histori Aspirasi
+    </a>
+
+
+    <!-- KELUAR -->
+
+    <a
+        href="../../logout.php"
+        class="menu-logout"
+    >
+        🚪 Keluar
+    </a>
+
+</nav>
 
 
     <main class="content">
@@ -172,12 +177,12 @@ $kelas =
         </h2>
 
 
-        <div class="feature-grid">
+      
 
             <a
-                href="#"
-                class="feature-card"
-            >
+    href="../aspirasi/buat.php"
+    class="feature-card"
+>
 
                 <div class="feature-icon">
                     📝
@@ -198,32 +203,11 @@ $kelas =
             </a>
 
 
-            <a
-                href="#"
-                class="feature-card"
-            >
 
-                <div class="feature-icon">
-                    📋
-                </div>
-
-                <div>
-
-                    <h3>
-                        Histori Aspirasi
-                    </h3>
-
-                    <p>
-                        Lihat riwayat laporan kamu.
-                    </p>
-
-                </div>
-
-            </a>
 
 
             <a
-                href="#"
+                href="../feedback/index.php"
                 class="feature-card"
             >
 

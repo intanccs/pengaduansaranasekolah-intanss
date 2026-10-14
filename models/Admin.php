@@ -9,21 +9,17 @@ class Admin
     public function __construct()
     {
         $database = new Database();
-
         $this->db = $database->connect();
     }
 
-
-    // =========================
     // CARI ADMIN
-    // =========================
-
     public function findByUsername($username)
     {
         $query = $this->db->prepare(
             "SELECT *
              FROM admins
-             WHERE username = ?"
+             WHERE username = ?
+             LIMIT 1"
         );
 
         $query->execute([$username]);

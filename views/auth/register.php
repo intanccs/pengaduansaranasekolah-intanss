@@ -107,20 +107,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
             <div class="input-group">
+    <label for="nis">NISN</label>
 
-                <label>
-                    NIS
-                </label>
-
-                <input
-                    type="number"
-                    name="nis"
-                    required
-                >
-
+    <input
+        type="text"
+        id="nis"
+        name="nis"
+        inputmode="numeric"
+        pattern="[0-9]{8}"
+        minlength="8"
+        maxlength="8"
+        title="NISN harus terdiri dari tepat 8 digit angka."
+        placeholder="Masukkan 8 digit NISN"
+        required
+    >
             </div>
-
-
             <div class="input-group">
 
                 <label>
