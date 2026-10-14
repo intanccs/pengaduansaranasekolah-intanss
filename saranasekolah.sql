@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Sep 2026 pada 01.16
+-- Waktu pembuatan: 14 Okt 2026 pada 02.48
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.10
 
@@ -42,7 +42,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `nama`, `password`, `role`, `created_at`, `updated_at`) VALUES
-(1, 'doe', 'Doe supriyadi', '7654321', 'Guru', '2026-09-02 20:47:43', '2026-09-02 20:47:43');
+(2, 'admin', 'Admin Sekolah', '$2y$10$5U3ciVpZbpEnoIi0rW5gFuJLs9ymt0z.wHWmePjdx9WL0wCIS/85e', 'Staff Prasarana Sekolah', '2026-09-29 05:18:59', '2026-10-13 07:24:59');
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,7 @@ INSERT INTO `admins` (`id`, `username`, `nama`, `password`, `role`, `created_at`
 CREATE TABLE `aspirasis` (
   `id_aspirasi` bigint(20) UNSIGNED NOT NULL,
   `nis` bigint(20) UNSIGNED NOT NULL,
-  `status` enum('Menunggu','Proses','Selesai') NOT NULL DEFAULT 'Menunggu',
+  `status` enum('Menunggu','Diproses','Selesai') NOT NULL DEFAULT 'Menunggu',
   `id_kategori` bigint(20) UNSIGNED NOT NULL,
   `ket` text NOT NULL,
   `foto` varchar(255) DEFAULT NULL,
@@ -69,12 +69,10 @@ CREATE TABLE `aspirasis` (
 --
 
 INSERT INTO `aspirasis` (`id_aspirasi`, `nis`, `status`, `id_kategori`, `ket`, `foto`, `anonim`, `feedback`, `admin_id`, `created_at`, `updated_at`) VALUES
-(1, 20251545, 'Menunggu', 2, 'Atap bolong', '1789601549_20251545.png', 0, NULL, NULL, '2026-09-16 23:32:34', '2026-09-16 23:32:34'),
+(1, 20251545, 'Diproses', 2, 'Atap bolong', '1789601549_20251545.png', 0, '', 2, '2026-09-16 23:32:34', '2026-10-13 23:50:05'),
 (2, 20251545, 'Menunggu', 2, 'Atap bolong', '1789601554_20251545.png', 0, NULL, NULL, '2026-09-16 23:32:34', '2026-09-16 23:32:34'),
-(3, 20251545, 'Menunggu', 2, 'Pintu rusak', '1790127789_20251545.jpg', 1, NULL, NULL, '2026-09-23 01:43:10', '2026-09-23 01:43:10'),
-(4, 202808061, 'Menunggu', 8, 'Kaki meja patah', '1790198772_202808061.jpg', 0, NULL, NULL, '2026-09-23 21:26:12', '2026-09-23 21:26:12'),
-(5, 202808061, 'Menunggu', 1, 'Pengunci pintu rusak', '1790205390_202808061.jpg', 0, NULL, NULL, '2026-09-23 23:16:30', '2026-09-23 23:16:30'),
-(6, 202808061, 'Menunggu', 4, 'Tanda penjaga hilang', '1790205721_202808061.jpg', 1, NULL, NULL, '2026-09-23 23:22:01', '2026-09-23 23:22:01');
+(3, 20251545, 'Selesai', 2, 'Pintu rusak', '1790127789_20251545.jpg', 1, '', 2, '2026-09-23 01:43:10', '2026-10-13 14:46:09'),
+(7, 20000001, 'Diproses', 7, 'Layar komputer retak', '1790659457_20000001.jpg', 0, '🥲', 2, '2026-09-29 05:24:17', '2026-10-13 14:45:30');
 
 -- --------------------------------------------------------
 
@@ -124,29 +122,17 @@ CREATE TABLE `siswas` (
 --
 
 INSERT INTO `siswas` (`nis`, `nama_siswa`, `kelas`, `password`, `created_at`, `updated_at`) VALUES
-(20200000, 'Sifa Syafakillah', 'XII RPL 3', '$2y$10$LSpX9EGhRqfEsfhWoAu6DOj2Ixb4W0qOhoRtVTxon1t2jNLxKBc/e', '2026-09-02 23:11:25', '2026-09-02 23:11:25'),
-(20211111, 'Mecca rahayu', 'XII RPL 3', '$2y$10$dcNITTNzkubT6DeZKmJH9O7xjz027so8p8aBuObRTDLE97715D8AC', '2026-09-02 21:00:01', '2026-09-02 21:00:01'),
-(20215151, 'Setia Anggara', 'XII RPL 2', '$2y$10$dj02Sw3hKU0NlAGIpj986etKD1ie84NWMnKvlL8LvocP02pkKqz32', '2026-09-02 23:25:17', '2026-09-02 23:25:17'),
-(20215415, 'Mutia Kartika', 'X MPLB 4', '$2y$10$vi2Ay.JkuRIAlKufFOtZJuFxC99DOlsnAFdYgwo5ZkCgGUfmgmZQS', '2026-09-02 23:40:36', '2026-09-02 23:40:36'),
-(20222222, 'Dinda Kirana', 'XII RPL 3', '$2y$10$Q9JJpK9YfTuZee9ZBntgM.QVoBIT4iOwHBDV7YnvYPEzuF5cwat0O', '2026-09-02 23:08:58', '2026-09-02 23:08:58'),
-(20230045, 'Linda Anindya', 'XII RPL 3', '$2y$10$SI4/ywKNfyuFF0q6y.PQx.Oxq7HM8z1/.4WPtC902VEk.kCL5S3Zy', '2026-09-02 20:32:33', '2026-09-02 20:32:33'),
-(20236036, 'Mahesa Handayani', 'XII RPL 3', '$2y$10$s7HKn/vkxP5Chg68BXC1Z.OwLjPWFyrmtSiwcK74/hnuV9YhhZUhi', '2026-09-02 23:19:35', '2026-09-02 23:19:35'),
-(20243434, 'Maharani Putri', 'XII RPL 3', '$2y$10$DoWX3h8HdfzXj0H7bjmnvuy67oUYdnWeAy20EKGdhb6.XZrzkf0mm', '2026-09-02 23:14:01', '2026-09-02 23:14:01'),
-(20245454, 'Kusuma Wardani', 'XII RPL 3', '$2y$10$JFcX8M0gf3XumgqbZ9pT0uIh9M2L1M55eTJ76.JfE3xRUPZVoOd1e', '2026-09-02 23:21:51', '2026-09-02 23:21:51'),
-(20245678, 'Panji sakti', 'XI RPL 4', '$2y$10$JUCQpvEnGemmREtpjC1owO..llJwmhfQHeDHl/d5D16U3XswulrI2', '2026-09-02 23:36:21', '2026-09-02 23:36:21'),
-(20250505, 'Gea satya', 'XI AKL 2', '$2y$10$oToNiLzSpublUOOOhk3mGOzem5arogolp3O0L6y18NtXBGoackLo2', '2026-09-02 23:28:07', '2026-09-02 23:28:07'),
+(10000000, 'Sifa Syafakillah', 'X MPLB 1', '$2y$10$h8R.rNfei1L8tnUSQEN/NOmKjADjRZZdWHCSZg3d6Ihb4WrdDBICq', '2026-09-28 17:35:31', '2026-09-28 17:35:31'),
+(20000001, 'Mecca rahayu', 'X MPLB 2', '$2y$10$p36p/1G94CMWPcYOpfQAf.LMHr3jfeRsD1veOG8in9nejqUiZzik.', '2026-09-28 17:37:26', '2026-09-28 17:37:26'),
 (20251545, 'Naya', 'X AKL 2', '$2y$10$6xuUjCnIpYWy9FoBW.Y99OETn1EGyM0fZ7/F1OFtaJg8a9Xk/vUuK', '2026-09-03 00:05:44', '2026-09-03 00:05:44'),
-(20253289, 'Kertana dewi', 'XI MPLB 3', '$2y$10$0nWlGVAFoYu5sVkzeZgY6OJOOX58z4zdX4DdHJP/oePoKjOqFwFey', '2026-09-02 23:34:23', '2026-09-02 23:34:23'),
-(20254813, 'Salwa Rinjani', 'X MPLB 1', '$2y$10$EyaujGoRyalg.pL0/MFfIOXcB.IaHNfI3ZMFLsLpYsDKV8tW6Suha', '2026-09-02 23:38:02', '2026-09-02 23:38:02'),
-(20255555, 'Naya Revina', 'XII RPL 3', '$2y$10$bG/hhgsz4/jEqG4Ey937u.ivG9J0tstZ2X73ounCe5inua/HTfszi', '2026-09-02 20:58:07', '2026-09-02 20:58:07'),
-(20258936, 'Rahaya Mustika', 'X MPLB 1', '$2y$10$Pynbx1Zv8Zyy8Y6zrlolS.dRLbppifnC6L1fEn5QrUhYYNHc3aG3W', '2026-09-02 23:35:24', '2026-09-02 23:35:24'),
-(20266333, 'Irma Suryani', 'XII RPL 3', '$2y$10$SONzEFOZT2K4CE8P1Vrix.0TTOWbz7F6Wk3TCkn0BrxEHm5MjkIeK', '2026-09-02 23:20:58', '2026-09-02 23:20:58'),
-(20266666, 'Dinda Kirana', 'XII RPL 3', '$2y$10$mpBYcGbnbqSxQF3xu47D3OGFqqiqhX6dPKWCaJ.RH64ul3CcUdp6m', '2026-09-02 23:10:04', '2026-09-02 23:10:04'),
-(20270685, 'Siska Raya', 'XII AKL 2', '$2y$10$W8AHYnUERqszSoJzf7rUOu5m5.i892HW6ZMbw8Cm4NNbtcZv2fo7e', '2026-09-02 23:30:51', '2026-09-02 23:30:51'),
-(20283835, 'Rian Permana', 'X RPL 4', '$2y$10$CK2fKV1kpQINuAkC694nfOeA1U0/nxznUKI3aZwET4DnKArcKioLa', '2026-09-02 23:31:44', '2026-09-02 23:31:44'),
-(20288888, 'Sintia Ayu', 'XII RPL 3', '$2y$10$125H/V2fJeTOoqBodI6IKuRildkSbpVBffQaV07v.Vfg9I29EXRja', '2026-09-02 23:12:44', '2026-09-02 23:12:44'),
-(202000004, 'Reina putri', 'XII RPL 2', '$2y$10$/U0v2/9qKy6K/Gs3QhPTTea/rc.fPDGhVqiwT205K7cUqHAcAM.PK', '2026-09-23 01:59:00', '2026-09-23 01:59:00'),
-(202808061, 'Reina putri', 'XII RPL 3', '$2y$10$ImiTX7YUmmvwHkwEn.ydYOuslfJ.AHWADTnnEbkaWl6FQqZUx09ey', '2026-09-23 02:00:28', '2026-09-23 02:00:28');
+(20254838, 'Eka Gustiwana', 'XI RPL 3', '$2y$10$wninOGrrNkeQe47DuYvXxOYc.ISyXOBmv9rDCv1.W7J81fLlsMZFa', '2026-10-14 01:16:07', '2026-10-14 01:16:07'),
+(30000001, 'Setia Anggara', 'X MPLB 3', '$2y$10$PoESGZTrXq92n8.ZaCEld.vXWjbXvNHGKAvGIH01nukFESkw/5BqS', '2026-09-28 17:38:57', '2026-09-28 17:38:57'),
+(40000001, 'Mutia Kartika', 'X MPLB 4', '$2y$10$nRCcVdo8umEAsDHMbUZ8NuVW0iU/lYDefQQI6k3qxyVRHlbxUkZDa', '2026-09-28 17:40:04', '2026-09-28 17:40:04'),
+(50000001, 'Dinda Kirana', 'X AKL 1', '$2y$10$.MJ83WWmWYiTvm0sA060Kuc84w5DBscHCfvXmuFDvcUrUL5u4TzpG', '2026-09-28 17:40:53', '2026-09-28 17:40:53'),
+(60000001, 'Linda Anindya', 'X AKL 2', '$2y$10$ZhpDhRN71OjanjMlAOWapeU3T/cEF26SR6JSRS/zRnB95Pc5y4AFW', '2026-09-28 17:41:39', '2026-09-28 17:41:39'),
+(70000001, 'Mahesa Handayani', 'X AKL 3', '$2y$10$9fcS6z2cIi1PWwCwBUnpL.Je/WdlDoW15A05k2pZrYs85zH5sDJNO', '2026-09-28 17:42:27', '2026-09-28 17:42:27'),
+(80000001, 'Maharani Putri', 'X AKL 4', '$2y$10$Dhz/Jl857nmnVEC8ro4fUehzRGEhyK/b3FlBln.qIKXkA6sNVGVVC', '2026-09-28 17:43:43', '2026-09-28 17:43:43'),
+(90000001, 'Kusuma wardani', 'X RPL 1', '$2y$10$ZwFdp8MPMNPofFp94acQF.lMJqnsGF4S6DT9uTosx5m2TFxdMyBcW', '2026-09-28 17:44:38', '2026-09-28 17:44:38');
 
 --
 -- Indexes for dumped tables
@@ -188,13 +174,13 @@ ALTER TABLE `siswas`
 -- AUTO_INCREMENT untuk tabel `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `aspirasis`
 --
 ALTER TABLE `aspirasis`
-  MODIFY `id_aspirasi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_aspirasi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategoris`
