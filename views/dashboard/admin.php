@@ -146,6 +146,7 @@ $jabatan = $_SESSION["admin_role"] ?? "Admin";
         <!-- STATISTIK -->
 
         <section class="admin-stat-grid">
+        
 
             <a href="../aspirasi/index.php"
    class="admin-stat-card"
@@ -200,6 +201,18 @@ $jabatan = $_SESSION["admin_role"] ?? "Admin";
 
             </a>
 
+          <a href="../aspirasi/rekap.php" class="admin-stat-card">
+            <div class="admin-stat-icon">
+                📊
+            </div>
+
+            <h3>Rekap Pengaduan</h3>
+
+            <p>
+                Lihat rekap pengaduan berdasarkan tanggal dan bulan.
+            </p>
+          </a>
+          
         </section>
 
 

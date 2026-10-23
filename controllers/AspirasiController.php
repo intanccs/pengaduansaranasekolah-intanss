@@ -202,4 +202,36 @@ public function daftarBerdasarkanKategoriDanStatus(
         $status
     );
 }
+  // ==========================================
+// REKAP PENGADUAN ADMIN
+// ==========================================
+
+public function rekapPengaduan(
+    $bulan,
+    $tahun,
+    $tanggal = null
+) {
+    return $this->aspirasi->getRekapPengaduan(
+        $bulan,
+        $tahun,
+        $tanggal
+    );
+}
+
+
+// ==========================================
+// DAFTAR PENGADUAN BERDASARKAN PERIODE
+// ==========================================
+
+public function pengaduanPeriode(
+    $bulan,
+    $tahun,
+    $tanggal = null
+) {
+    return $this->aspirasi->getPengaduanPeriode(
+        $bulan,
+        $tahun,
+        $tanggal
+    );
+}
 }
