@@ -2,9 +2,6 @@
 
 Project UKK oleh **intan**
 
-# Projek Peminjaman Buku - Uji Kompetensi Keahlian (UKK)
-
-Dibuat oleh Kirani Kelas 12 RPL
 
 ### Login Admin
 
@@ -16,5 +13,5 @@ Dibuat oleh Kirani Kelas 12 RPL
 
 | Nisn | Password |
 | :--- | :------- |
-| Username | 87654321 |
+| 20210000 | 87654321 |
 
