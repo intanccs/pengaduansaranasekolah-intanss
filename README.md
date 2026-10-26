@@ -2,12 +2,19 @@
 
 Project UKK oleh **intan**
 
-## Deskripsi
-Aplikasi web untuk pengaduan dan saran terkait sarana sekolah. 
-Siswa bisa mengajukan keluhan kerusakan fasilitas, yang akan ditindaklanjuti oleh staff sapras sekolah.
+# Projek Peminjaman Buku - Uji Kompetensi Keahlian (UKK)
 
-## Fitur
-- Login siswa & admin
-- Form pengaduan sarana
-- Status pengaduan : Menunggu, DiProses, Selesai
-- Kelola aspirasi, Feedback : Admin, Kepala Sekolah, dan Guru
+Dibuat oleh Kirani Kelas 12 RPL
+
+### Login Admin
+
+| Username | Password |
+| :------- | :------- |
+| Admin    | admin123 |
+
+### Login Siswa
+
+| Nisn | Password |
+| :--- | :------- |
+| Username | 87654321 |
+
