@@ -7,7 +7,7 @@ Project UKK oleh **intan**
 
 | Username | Password |
 | :------- | :------- |
-| Admin    | admin123 |
+| admin    | admin123 |
 
 ### Login Siswa
 
