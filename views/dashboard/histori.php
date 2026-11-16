@@ -210,7 +210,7 @@ $histori = $aspirasiModel->getByNis($nis);
                         <h3>
                             <?php
                             echo htmlspecialchars(
-                                $item["lokasi"]
+                                $item["lokasi"] ?? '-'
                             );
                             ?>
                         </h3>
