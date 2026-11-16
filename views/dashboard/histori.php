@@ -159,7 +159,17 @@ $histori = $aspirasiModel->getByNis($nis);
                                 );
                                 ?>
                             </span>
-
+<p>
+    <strong>Tanggal pengaduan:</strong>
+    <?= htmlspecialchars(
+        date(
+            'd-m-Y H:i',
+            strtotime($item["created_at"])
+        ),
+        ENT_QUOTES,
+        'UTF-8'
+    ) ?>
+  </p>
 
                             <!-- STATUS -->
 
@@ -184,6 +194,7 @@ $histori = $aspirasiModel->getByNis($nis);
                             <span
                                 class="status <?php echo $statusClass; ?>"
                             >
+                              
                                 <?php
                                 echo htmlspecialchars(
                                     $item["status"]

@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// Mencegah halaman login tersimpan di cache browser
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: 0");
+
 if (
     !isset($_SESSION["login"]) ||
     $_SESSION["login"] !== true ||
@@ -95,13 +101,52 @@ $updated = isset($_GET["updated"]);
             line-height: 1.6;
         }
 
-        .detail-photo {
-            width: 100%;
-            max-width: 450px;
-            border-radius: 12px;
-            margin-top: 10px;
-        }
+        .detail-main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 25px;
+    align-items: start;
+}
 
+.detail-info {
+    min-width: 0;
+}
+
+.detail-photo-wrapper {
+    width: 100%;
+    padding: 10px;
+    background: #f4f7f9;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.detail-photo {
+    display: block;
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.detail-photo-wrapper p {
+    margin-top: 0;
+    font-weight: bold;
+}
+
+/* Tampilan HP */
+@media (max-width: 650px) {
+    .detail-main-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-photo-wrapper {
+        max-width: 300px;
+    }
+
+    .detail-photo {
+        max-height: 200px;
+    }
+}
         .detail-card label {
             display: block;
             margin: 15px 0 7px;
@@ -152,12 +197,8 @@ $updated = isset($_GET["updated"]);
            style="color:inherit;text-decoration:none;">←</a>
         <div class="app-title">Detail Pengaduan</div>
     </header>
-
-    <main class="content">
-        <a href="index.php" class="back-link">
-            ← Kembali ke daftar pengaduan
-        </a>
-
+  
+<main class="content">
         <?php if ($updated): ?>
             <div class="notice">Pengaduan berhasil diperbarui.</div>
         <?php endif; ?>
@@ -165,47 +206,80 @@ $updated = isset($_GET["updated"]);
         <?php if ($error !== ""): ?>
             <div class="notice error"><?= e($error) ?></div>
         <?php endif; ?>
+<section class="detail-card detail-print-area">
 
-        <section class="detail-card">
+    <div class="detail-main-layout">
+
+        <!-- INFORMASI LAPORAN -->
+        <div class="detail-info">
+
             <h2><?= e($item["ket_kategori"]) ?></h2>
 
-            <p><strong>ID Pengaduan:</strong>
-                <?= e($item["id_aspirasi"]) ?></p>
+            <p>
+                <strong>ID Pengaduan:</strong>
+                <?= e($item["id_aspirasi"]) ?>
+            </p>
 
-            <p><strong>Pelapor:</strong>
+            <p>
+                <strong>Pelapor:</strong>
                 <?= (int) $item["anonim"] === 1
                     ? "Anonim"
-                    : e($item["nama_siswa"]) ?></p>
+                    : e($item["nama_siswa"]) ?>
+            </p>
 
-            <p><strong>Kelas:</strong>
+            <p>
+                <strong>Kelas:</strong>
                 <?= (int) $item["anonim"] === 1
                     ? "Disembunyikan"
-                    : e($item["kelas"]) ?></p>
+                    : e($item["kelas"]) ?>
+            </p>
 
-            <p><strong>Tanggal:</strong>
-                <?= e($item["created_at"]) ?></p>
+            <p>
+                <strong>Tanggal:</strong>
+                <?= e($item["created_at"]) ?>
+            </p>
 
             <p><strong>Keterangan:</strong></p>
+
             <p><?= nl2br(e($item["ket"])) ?></p>
 
-            <?php if ($fotoUrl !== ""): ?>
-                <p><strong>Foto Pengaduan:</strong></p>
-                <img class="detail-photo"
-                     src="<?= e($fotoUrl) ?>"
-                     alt="Foto pengaduan">
-            <?php else: ?>
-                <p><strong>Foto:</strong> Tidak tersedia.</p>
-            <?php endif; ?>
+            <p>
+                <strong>Status saat ini:</strong>
+                <?= e($item["status"]) ?>
+            </p>
 
-            <p><strong>Status saat ini:</strong>
-                <?= e($item["status"]) ?></p>
+            <p class="detail-feedback-screen">
+    <strong>Feedback sebelumnya:</strong><br>
 
-            <p><strong>Feedback sebelumnya:</strong><br>
-                <?= $item["feedback"] !== null &&
-                    trim($item["feedback"]) !== ""
-                    ? nl2br(e($item["feedback"]))
-                    : "Belum ada feedback." ?></p>
-        </section>
+    <?= $item["feedback"] !== null &&
+        trim($item["feedback"]) !== ""
+        ? nl2br(e($item["feedback"]))
+        : "Belum ada feedback." ?>
+            </p>
+
+        </div>
+
+
+        <!-- FOTO LAPORAN -->
+        <?php if ($fotoUrl !== ""): ?>
+
+            <div class="detail-photo-wrapper">
+
+                <p>Foto Pengaduan</p>
+
+                <img
+                    class="detail-photo"
+                    src="<?= e($fotoUrl) ?>"
+                    alt="Foto pengaduan"
+                >
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+</section>
 
         <section class="detail-card">
             <h2>Perbarui Pengaduan</h2>

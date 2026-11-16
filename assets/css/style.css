@@ -1851,5 +1851,568 @@ a.category-card:hover {
     text-decoration: none;
     font-weight: bold;
 }
+  /* REKAP PENGADUAN ADMIN */
+
+.rekap-filter {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    margin: 18px 0 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+.rekap-filter select,
+.rekap-filter input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d8e4eb;
+    border-radius: 10px;
+    background: #ffffff;
+    font-size: 14px;
+}
+
+.rekap-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 18px 0 28px;
+}
+
+.rekap-card {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rekap-card span {
+    color: #667781;
+    font-size: 13px;
+}
+
+.rekap-card strong {
+    color: #287fa7;
+    font-size: 28px;
+}
+
+@media (max-width: 600px) {
+    .rekap-filter {
+        padding: 16px;
+    }
+
+    .rekap-grid {
+        gap: 10px;
+    }
+
+    .rekap-card {
+        padding: 15px;
+    }
+
+    .rekap-card strong {
+        font-size: 24px;
+    }
+}
+}
+/* =================================
+PROFIL ADMIN
+================================= */
+
+.profile-card {
+width: 100%;
+max-width: 500px;
+margin: 20px auto;
+padding: 30px 25px;
+background: #ffffff;
+border-radius: 22px;
+text-align: center;
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar {
+width: 85px;
+height: 85px;
+margin: 0 auto 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background: #e5f6fc;
+font-size: 42px;
+}
+
+.profile-card h2 {
+margin-bottom: 6px;
+font-size: 24px;
+color: #17202a;
+overflow-wrap: anywhere;
+}
+
+.admin-profile-role {
+margin-bottom: 25px;
+color: #77838a;
+font-size: 14px;
+}
+
+.admin-profile-info {
+width: 100%;
+margin-bottom: 25px;
+border-top: 1px solid #eef2f4;
+}
+
+.admin-profile-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 15px;
+padding: 16px 5px;
+border-bottom: 1px solid #eef2f4;
+text-align: left;
+}
+
+.admin-profile-row span {
+color: #77838a;
+font-size: 13px;
+}
+
+.admin-profile-row strong {
+color: #27343b;
+font-size: 14px;
+text-align: right;
+overflow-wrap: anywhere;
+}
+
+.admin-profile-button {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+min-height: 46px;
+padding: 10px;
+border-radius: 12px;
+background: #3d9bc5;
+color: white;
+text-decoration: none;
+font-size: 14px;
+font-weight: bold;
+}
+
+.admin-profile-button:hover {
+background: #287fa7;
+}
+
+@media (max-width: 400px) {
+.profile-card {
+padding: 25px 18px;
+}
+
+.admin-profile-row {
+    gap: 10px;
+}
+
+}
+/* CETAK KERTAS */
+
+@page {
+    size: A4 portrait;
+    margin: 15mm;
+}
+
+@media print {
+    body.print-page {
+        padding: 0;
+        background: white;
+    }
+
+    .print-container {
+        max-width: none;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .print-actions {
+        display: none;
+    }
+
+    .detail-main-layout {
+        grid-template-columns: minmax(0, 1fr) 220px;
+    }
+
+    .detail-photo-wrapper {
+        max-width: 220px;
+    }
+
+    .detail-photo {
+        max-height: 220px;
+    }
+}
+/* TOMBOL CETAK LAPORAN */
+.waiting-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.waiting-actions .waiting-button {
+    margin-top: 0;
+}
+
+.waiting-print-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 9px;
+    background: #267fa6;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* CETAK LAPORAN MENUNGGU */
+
+.waiting-print-photo {
+    display: none;
+}
+
+@media print {
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    .waiting-card.sedang-dicetak,
+    .waiting-card.sedang-dicetak * {
+        visibility: visible !important;
+    }
+
+    .waiting-card.sedang-dicetak {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 240px;
+        gap: 25px;
+        align-items: start;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin: 0;
+    }
+
+    .waiting-card.sedang-dicetak .waiting-print-info {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+    }
+
+    .waiting-card.sedang-dicetak .waiting-print-photo {
+        display: block !important;
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+        margin: 0;
+    }
+
+    .waiting-card.sedang-dicetak .waiting-print-photo img {
+        display: block;
+        width: 100%;
+        max-height: 250px;
+        object-fit: contain;
+    }
+
+    .waiting-card.sedang-dicetak .waiting-actions {
+        display: none !important;
+    }
+}
+/* CETAK DETAIL PENGADUAN */
+
+@page {
+    size: A4 portrait;
+    margin: 15mm;
+}
+
+@media print {
+
+    html,
+    body {
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    .detail-print-area,
+    .detail-print-area * {
+        visibility: visible !important;
+    }
+
+    .detail-print-area {
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        padding: 15px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        background: white !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+
+    .detail-main-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 220px !important;
+        gap: 20px !important;
+        align-items: start !important;
+    }
+
+    .detail-info {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+    }
+
+    .detail-photo-wrapper {
+        display: block !important;
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        width: 100% !important;
+    }
+
+    .detail-photo {
+        display: block !important;
+        width: 100% !important;
+        max-height: 230px !important;
+        object-fit: contain !important;
+    }
+
+    .detail-feedback-screen,
+    .detail-print-actions,
+    .app-header,
+    .detail-card form {
+        display: none !important;
+    }
+}
+/* CETAK SEMUA PENGADUAN */
+
+.cetak-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background: white;
+    color: #222;
+}
+
+.cetak-container h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #333;
+}
+
+.cetak-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 25px;
+    align-items: start;
+}
+
+.cetak-info p {
+    margin: 0 0 15px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.cetak-keterangan {
+    line-height: 1.6;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.cetak-foto {
+    width: 100%;
+}
+
+.cetak-foto img {
+    display: block;
+    width: 100%;
+    max-height: 280px;
+    margin-top: 12px;
+    object-fit: contain;
+}
+
+@page {
+    size: A4 portrait;
+    margin: 15mm;
+}
+
+@media print {
+
+    .cetak-body {
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .cetak-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .cetak-content {
+        grid-template-columns: minmax(0, 1fr) 220px;
+        gap: 20px;
+    }
+
+    .cetak-foto img {
+        max-height: 230px;
+    }
+}
+
+/* ==============================
+   PRATINJAU CETAK LAPORAN
+============================== */
+
+.cetak-preview-page {
+    margin: 0;
+    padding: 25px;
+    background: #e9e9e9;
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+.cetak-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto 20px;
+}
+
+.cetak-unduh,
+.cetak-tombol-print {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #252525;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cetak-tombol-print {
+    background: #e5b800;
+    color: #222;
+}
+
+.cetak-kertas {
+    box-sizing: border-box;
+    max-width: 900px;
+    min-height: 600px;
+    margin: auto;
+    padding: 40px;
+    background: white;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    font-size: 14px;
+}
+
+.cetak-kertas .judul-laporan {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.cetak-kertas .tabel-laporan {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cetak-kertas .tabel-laporan td {
+    padding: 12px;
+    vertical-align: top;
+    border: 1px solid #999;
+}
+
+.cetak-kertas .informasi-laporan {
+    width: 65%;
+}
+
+.cetak-kertas .foto-laporan {
+    width: 35%;
+    text-align: center;
+}
+
+.cetak-kertas .foto-laporan img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    object-fit: contain;
+}
+
+.cetak-kertas .keterangan-laporan {
+    line-height: 1.7;
+}
+
+
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 15mm;
+    }
+
+    html,
+    body.cetak-preview-page {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        background: white !important;
+    }
+
+    .cetak-toolbar {
+        display: none !important;
+    }
+
+    .cetak-kertas {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+        color: #222 !important;
+        background: white !important;
+        visibility: visible !important;
+    }
+
+    .cetak-kertas table,
+    .cetak-kertas tr,
+    .cetak-kertas td,
+    .cetak-kertas p,
+    .cetak-kertas h2,
+    .cetak-kertas img {
+        visibility: visible !important;
+    }
+
+    .cetak-kertas img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}

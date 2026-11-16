@@ -172,12 +172,21 @@ function e($value)
                                 <?= e($item["status"]) ?>
                             </span>
                         </p>
+<div class="complaint-actions">
 
-                        <a class="detail-button"
-                           href="detail.php?id=<?= (int) $item["id_aspirasi"] ?>">
-                            Lihat Detail
-                        </a>
+    <a class="detail-button"
+       href="detail.php?id=<?= (int) $item["id_aspirasi"] ?>">
+        Lihat Detail
+    </a>
+<a
+    href="cetak.php?id=<?= (int) $item['id_aspirasi'] ?>"
+    target="_blank"
+    class="waiting-print-button"
+>
+    Cetak
+</a>
 
+</div>
                     </article>
 
                 <?php endforeach; ?>

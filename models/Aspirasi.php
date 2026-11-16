@@ -368,6 +368,7 @@ public function getByKategoriAndStatus($idKategori, $status)
         "SELECT
             a.id_aspirasi,
             a.ket,
+            a.foto,
             a.status,
             a.anonim,
             a.created_at,
@@ -386,5 +387,121 @@ public function getByKategoriAndStatus($idKategori, $status)
     $query->execute([$idKategori, $status]);
 
     return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+  // ==========================================
+// REKAP JUMLAH PENGADUAN BERDASARKAN TANGGAL
+// ==========================================
+
+public function getRekapPengaduan($bulan, $tahun, $tanggal = null)
+{
+    $sql = "SELECT
+                COUNT(*) AS total,
+                SUM(CASE WHEN status = 'Menunggu'
+                    THEN 1 ELSE 0 END) AS menunggu,
+                SUM(CASE WHEN status = 'Diproses'
+                    THEN 1 ELSE 0 END) AS diproses,
+                SUM(CASE WHEN status = 'Selesai'
+                    THEN 1 ELSE 0 END) AS selesai
+            FROM aspirasis
+            WHERE MONTH(created_at) = ?
+              AND YEAR(created_at) = ?";
+
+    $params = [(int) $bulan, (int) $tahun];
+
+    if ($tanggal !== null) {
+        $sql .= " AND DAY(created_at) = ?";
+        $params[] = (int) $tanggal;
+    }
+
+    $query = $this->db->prepare($sql);
+    $query->execute($params);
+
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+
+// ==========================================
+// DAFTAR PENGADUAN BERDASARKAN PERIODE
+// ==========================================
+
+public function getPengaduanPeriode(
+    $bulan,
+    $tahun,
+    $tanggal = null
+) {
+    $sql = "SELECT
+                a.id_aspirasi,
+                a.ket,
+                a.foto,
+                a.status,
+                a.anonim,
+                a.created_at,
+                s.nama_siswa,
+                s.kelas,
+                k.ket_kategori
+            FROM aspirasis a
+            INNER JOIN siswas s
+                ON a.nis = s.nis
+            INNER JOIN kategoris k
+                ON a.id_kategori = k.id_kategori
+            WHERE MONTH(a.created_at) = ?
+              AND YEAR(a.created_at) = ?";
+
+    $params = [(int) $bulan, (int) $tahun];
+
+    if ($tanggal !== null) {
+        $sql .= " AND DAY(a.created_at) = ?";
+        $params[] = (int) $tanggal;
+    }
+
+    $sql .= " ORDER BY a.created_at DESC";
+
+    $query = $this->db->prepare($sql);
+    $query->execute($params);
+
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+  // ==========================================
+// AMBIL LAPORAN BARU UNTUK NOTIFIKASI
+// ==========================================
+
+public function getLaporanBaru($lastId)
+{
+    $query = $this->db->prepare(
+        "SELECT
+            a.id_aspirasi,
+            a.ket,
+            a.created_at,
+            k.ket_kategori
+         FROM aspirasis a
+         INNER JOIN kategoris k
+            ON a.id_kategori = k.id_kategori
+         WHERE a.id_aspirasi > ?
+           AND a.status = 'Menunggu'
+         ORDER BY a.id_aspirasi ASC"
+    );
+
+    $query->execute([(int) $lastId]);
+
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+// ==========================================
+// AMBIL ID LAPORAN TERAKHIR
+// ==========================================
+
+public function getIdAspirasiTerbaru()
+{
+    $query = $this->db->prepare(
+        "SELECT COALESCE(MAX(id_aspirasi), 0) AS id_terbaru
+         FROM aspirasis"
+    );
+
+    $query->execute();
+
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    return (int) $result["id_terbaru"];
 }
 }

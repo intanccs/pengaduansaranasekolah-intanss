@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// Mencegah halaman login tersimpan di cache browser
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: 0");
+
 if (
     !isset($_SESSION["login"]) ||
     $_SESSION["login"] !== true ||
@@ -146,6 +152,7 @@ $jabatan = $_SESSION["admin_role"] ?? "Admin";
         <!-- STATISTIK -->
 
         <section class="admin-stat-grid">
+        
 
             <a href="../aspirasi/index.php"
    class="admin-stat-card"
@@ -200,6 +207,18 @@ $jabatan = $_SESSION["admin_role"] ?? "Admin";
 
             </a>
 
+          <a href="../aspirasi/rekap.php" class="admin-stat-card">
+            <div class="admin-stat-icon">
+                📊
+            </div>
+
+            <h3>Rekap Pengaduan</h3>
+
+            <p>
+                Lihat rekap pengaduan berdasarkan tanggal dan bulan.
+            </p>
+          </a>
+          
         </section>
 
 
@@ -209,6 +228,13 @@ $jabatan = $_SESSION["admin_role"] ?? "Admin";
 </div>
 
 <script src="../../assets/js/menu.js"></script>
+  <script
+    src="../../assets/js/notifikasi-admin.js"
+    data-endpoint="../aspirasi/notifikasi.php"
+    data-detail="../aspirasi/detail.php"
+    data-waiting="../aspirasi/menunggu.php"
+    data-admin="<?= htmlspecialchars((string) ($_SESSION['admin_id'] ?? 'admin'), ENT_QUOTES, 'UTF-8') ?>"
+></script>
 
 </body>
 </html>

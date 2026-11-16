@@ -190,34 +190,78 @@ function eMenunggu($value)
 
             <?php else: ?>
 
+                
                 <?php foreach ($dataAspirasi as $item): ?>
                     <article class="waiting-card">
-                        <h3><?= eMenunggu($item["ket_kategori"]) ?></h3>
 
-                        <p><strong>ID Pengaduan:</strong>
-                            <?= (int) $item["id_aspirasi"] ?></p>
+                        <div class="waiting-print-info">
 
-                        <p><strong>Pelapor:</strong>
-                            <?= (int) $item["anonim"] === 1
-                                ? "Anonim"
-                                : eMenunggu($item["nama_siswa"]) ?></p>
+                            <h3><?= eMenunggu($item["ket_kategori"]) ?></h3>
 
-                        <p><strong>Kelas:</strong>
-                            <?= (int) $item["anonim"] === 1
-                                ? "Disembunyikan"
-                                : eMenunggu($item["kelas"]) ?></p>
+                            <p>
+                                <strong>ID Pengaduan:</strong>
+                                <?= (int) $item["id_aspirasi"] ?>
+                            </p>
 
-                        <p><strong>Tanggal:</strong>
-                            <?= eMenunggu($item["created_at"]) ?></p>
+                            <p>
+                                <strong>Pelapor:</strong>
+                                <?= (int) $item["anonim"] === 1
+                                    ? "Anonim"
+                                    : eMenunggu($item["nama_siswa"]) ?>
+                            </p>
 
-                        <p><strong>Status:</strong>
-                            <span class="waiting-badge">Menunggu</span>
-                        </p>
+                            <p>
+                                <strong>Kelas:</strong>
+                                <?= (int) $item["anonim"] === 1
+                                    ? "Disembunyikan"
+                                    : eMenunggu($item["kelas"]) ?>
+                            </p>
 
-                        <a class="waiting-button"
-                           href="detail.php?id=<?= (int) $item["id_aspirasi"] ?>">
-                            Lihat Detail
-                        </a>
+                            <p>
+                                <strong>Tanggal:</strong>
+                                <?= eMenunggu($item["created_at"]) ?>
+                            </p>
+
+                            <p>
+                                <strong>Status:</strong>
+                                <span class="waiting-badge">Menunggu</span>
+                            </p>
+
+                            <p><strong>Keterangan:</strong></p>
+                            <p><?= nl2br(eMenunggu($item["ket"])) ?></p>
+
+                        </div>
+
+                        <?php if (!empty($item["foto"])): ?>
+                            <?php
+                            $namaFoto = basename($item["foto"]);
+                            $pathFoto = __DIR__ . "/../../assets/uploads/" . $namaFoto;
+                            ?>
+
+                            <?php if (is_file($pathFoto)): ?>
+                                <div class="waiting-print-photo">
+                                    <p><strong>Foto Pengaduan</strong></p>
+
+                                    <img
+                                        src="../../assets/uploads/<?= rawurlencode($namaFoto) ?>"
+                                        alt="Foto pengaduan"
+                                    >
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+<div class="waiting-actions">
+
+    <a class="waiting-button"
+       href="detail.php?id=<?= (int) $item['id_aspirasi'] ?>">
+        Lihat Detail
+    </a>
+
+    <a class="waiting-print-button"
+       href="cetak.php?id=<?= (int) $item['id_aspirasi'] ?>">
+        Cetak
+    </a>
+
+</div>
                     </article>
                 <?php endforeach; ?>
 

@@ -178,7 +178,13 @@ function eSelesai($value)
                            href="detail.php?id=<?= (int) $item["id_aspirasi"] ?>">
                             Lihat Detail
                         </a>
-
+<a
+    href="cetak.php?id=<?= (int) $item['id_aspirasi'] ?>"
+    target="_blank"
+    class="waiting-print-button"
+>
+    Cetak
+</a>
                     </article>
 
                 <?php endforeach; ?>
