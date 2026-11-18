@@ -26,70 +26,56 @@ class AspirasiController
     // BUAT ASPIRASI
     // ==========================================
 
-    public function buatAspirasi(
+    
+public function buatAspirasi(
+    $nis,
+    $idKategori,
+    $ket,
+    $foto,
+    $anonim
+) {
+    $ket = trim($ket);
+
+    // Jika kategori tidak dipilih, gunakan kategori Lainnya
+    if (empty($idKategori)) {
+        $idKategori = 9;
+    } else {
+        $idKategori = (int) $idKategori;
+    }
+
+    // Validasi keterangan
+    if ($ket === "") {
+        return [
+            "success" => false,
+            "message" => "Keterangan wajib diisi."
+        ];
+    }
+
+    // Simpan aspirasi
+    $result = $this->aspirasi->create(
         $nis,
         $idKategori,
         $ket,
         $foto,
         $anonim
-    ) {
+    );
 
-        $ket = trim($ket);
-
-
-        // Validasi kategori
-
-        if (empty($idKategori)) {
-
-            return [
-                "success" => false,
-                "message" => "Kategori wajib dipilih."
-            ];
-        }
-
-
-    
-
-        // Validasi keterangan
-
-        if ($ket === "") {
-
-            return [
-                "success" => false,
-                "message" => "Keterangan wajib diisi."
-            ];
-        }
-
-
-        // Simpan
-
-        $result = $this->aspirasi->create(
-            $nis,
-            $idKategori,       
-            $ket,
-            $foto,
-            $anonim
-        );
-
-
-        if ($result) {
-
-            return [
-                "success" => true,
-                "message" => "Aspirasi berhasil dikirim."
-            ];
-        }
-
-
+    if ($result) {
         return [
-            "success" => false,
-            "message" => "Aspirasi gagal dikirim."
+            "success" => true,
+            "message" => "Aspirasi berhasil dikirim."
         ];
     }
 
+    return [
+        "success" => false,
+        "message" => "Aspirasi gagal dikirim."
+    ];
+}
+
 
     // ==========================================
-    // HISTORI
+    // HISTORIkasih tau
     // ==========================================
 
     public function histori($nis)
@@ -158,6 +144,7 @@ public function updateStatusFeedback(
         $adminId
     );
 
+  
     if ($result) {
         return [
             "success" => true,
